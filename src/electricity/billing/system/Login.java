@@ -2,8 +2,10 @@ package electricity.billing.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener {
 
     //declare things globally so that ypu can you those things in backend
     JTextField userText, passwordText;
@@ -49,13 +51,18 @@ Login(){
     //buttons
      loginButton= new JButton("Login");
      loginButton.setBounds(330,180,100,20);
+     loginButton.addActionListener(this);
      add(loginButton);
 
      cancelButton = new JButton("Cancel");
      cancelButton.setBounds(460,180,100,20);
+     cancelButton.addActionListener(this);
      add(cancelButton);
+
+
      signupButton = new JButton("Signup");
      signupButton.setBounds(400,215,100,20);
+     signupButton.addActionListener( this);
      add(signupButton);
 
      ImageIcon profileOne = new ImageIcon(ClassLoader.getSystemResource("icon/profile.png"));
@@ -73,6 +80,21 @@ Login(){
     setVisible(true);      //default visibility is false ,make it true to make frame visible
 
 }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    if(e.getSource()==loginButton){
+
+    }
+    else if(e.getSource()==cancelButton){
+        setVisible(false);
+    }
+
+    else if(e.getSource()==signupButton){
+            setVisible(false);
+            new Signup();
+        }
+    }
 
     public static void main(String[] args) {
         new Login();
