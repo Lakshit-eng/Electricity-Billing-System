@@ -139,6 +139,50 @@ public class main_class extends JFrame {
         genBill.setIcon(new ImageIcon(genbill2));
         Bills.add(genBill);
 
+        //add new item utility
+
+        JMenu utility = new JMenu("Utility");
+        utility.setFont(new Font("serif",Font.PLAIN,15));
+        menubar.add(utility);
+
+        //add drop down
+
+        JMenuItem notepad = new JMenuItem("NotePad");
+        notepad.setFont(new Font("monospaced",Font.PLAIN,14));
+
+        //Image icon
+        ImageIcon noteImage = new ImageIcon(ClassLoader.getSystemResource("icon/notepad.png"));
+        Image noteImg2 = noteImage.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
+        notepad.setIcon(new ImageIcon(noteImg2));
+        utility.add(notepad);
+
+        //add calc
+        JMenuItem calculator = new JMenuItem("Calculator");
+        calculator.setFont(new Font("monospaced",Font.PLAIN,14));
+
+        //Image icon
+        ImageIcon calcImage = new ImageIcon(ClassLoader.getSystemResource("icon/calculator.png"));
+        Image calcImg2 = calcImage.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
+        calculator.setIcon(new ImageIcon(calcImg2));
+        utility.add(calculator);
+
+        //add new item exit
+
+        JMenu exit = new JMenu("Exit");
+        exit.setFont(new Font("serif",Font.PLAIN,15));
+        menubar.add(exit);
+
+        //add drop down
+
+        JMenuItem exitt = new JMenuItem("Exit");
+        exitt.setFont(new Font("monospaced",Font.PLAIN,14));
+
+        //Image icon
+        ImageIcon exitImage = new ImageIcon(ClassLoader.getSystemResource("icon/exit.png"));
+        Image exitImg2 = exitImage.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
+        exitt.setIcon(new ImageIcon(exitImg2));
+        exit.add(exitt);
+
        setLayout(new FlowLayout());
        setVisible(true);
     }
