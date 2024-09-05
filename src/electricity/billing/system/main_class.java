@@ -9,7 +9,7 @@ public class main_class extends JFrame {
 
        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-       ImageIcon imageicon = new ImageIcon(ClassLoader.getSystemResource("icon/ebs.png"));
+       ImageIcon imageicon = new ImageIcon(ClassLoader.getSystemResource("icon/bg.jpg"));
        Image image = imageicon.getImage().getScaledInstance(1530,830,Image.SCALE_DEFAULT);
        ImageIcon image2 = new ImageIcon(image);
        JLabel bg_image = new JLabel(image2);
@@ -18,6 +18,7 @@ public class main_class extends JFrame {
        //use menu bar in this page
 
         JMenuBar menubar = new JMenuBar();
+
         setJMenuBar(menubar);
 
         //add items in menu bar
