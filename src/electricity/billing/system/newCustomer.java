@@ -2,11 +2,13 @@ package electricity.billing.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class newCustomer extends JFrame {
-    JLabel heading,customerName ,meterNum,address,city, state,email,phone;
-    JTextField nameText,meterText,addressText,cityText,stateText,emailText,phoneText;
+public class newCustomer extends JFrame implements ActionListener {
+    JLabel heading,customerName ,meterNum,meterText,address,city, state,email,phone;
+    JTextField nameText,addressText,cityText,stateText,emailText,phoneText;
     JButton next,cancel;
     newCustomer(){
         super("New Customer");
@@ -35,7 +37,7 @@ public class newCustomer extends JFrame {
        meterNum.setBounds(50,120,100,20);
        panel.add(meterNum);
 
-       meterText = new JTextField("");
+       meterText = new JLabel("");
        meterText.setBounds(180,120,150,20);
        panel.add(meterText);
 
@@ -67,7 +69,7 @@ public class newCustomer extends JFrame {
 
         //adding state
 
-        state =new JLabel("Address:");
+        state =new JLabel("State:");
         state.setBounds(50,240,100,20);
         panel.add(state);
 
@@ -99,6 +101,7 @@ public class newCustomer extends JFrame {
         next.setBounds(120,390,100,25);
         next.setBackground(Color.black);
         next.setForeground(Color.white);
+        next.addActionListener(this);
         panel.add(next);
 
         //cancel button
@@ -107,6 +110,7 @@ public class newCustomer extends JFrame {
         cancel.setBounds(230,390,100,25);
         cancel.setBackground(Color.black);
         cancel.setForeground(Color.white);
+        cancel.addActionListener(this);
         panel.add(cancel);
 
     setLayout(new BorderLayout());
@@ -124,6 +128,43 @@ public class newCustomer extends JFrame {
     setSize(700,500);
     setLocation(400,200);
     setVisible(true);
+    }
+
+    //override action listener
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==next){
+            String sname = nameText.getText();
+            String smeter = meterText.getText();
+            String saddress = addressText.getText();
+            String scity = cityText.getText();
+            String sstate = stateText.getText();
+            String semail = emailText.getText();
+            String sphone = phoneText.getText();
+
+
+            String  query_customer = "Insert into new_customer values('"+sname+"','"+smeter+"','"+saddress+"','"+scity+"','"+sstate+"','"+semail+"','"+sphone+"')";
+            String query_signup = "Insert into signup values ('"+smeter+"','','"+sname+"','','')";
+
+            try{
+                Database c = new Database();
+               c.statement.executeUpdate(query_customer);
+               c.statement.executeUpdate(query_signup);
+
+                JOptionPane.showMessageDialog(null,"Customer details added successfully");
+                setVisible(false);
+                new meterInfo(smeter);
+
+            }catch (Exception E){
+                E.printStackTrace();
+            }
+        }
+        else{
+            setVisible(false);
+        }
     }
 
     public static void main(String[] args) {
